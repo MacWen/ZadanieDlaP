@@ -1,0 +1,10 @@
+ZadanieDlaP
+
+To compile use:
+
+$ cmake .
+$ make
+
+To run use:
+
+$ ./ZadanieDlaP

@@ -1,0 +1,8 @@
+cmake_minimum_required (VERSION 2.6)
+project (ZadanieDlaP)
+INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/include")
+add_library(shapefactory SHARED src/shapefactory.cpp)
+add_library(rectangle SHARED src/rectangle.cpp)
+add_library(triangle SHARED src/triangle.cpp)
+add_executable(ZadanieDlaP src/main.cpp)
+target_link_libraries(ZadanieDlaP shapefactory rectangle triangle)
