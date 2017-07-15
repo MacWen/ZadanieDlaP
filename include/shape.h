@@ -12,6 +12,8 @@ public:
     virtual double getWidth() = 0;
     virtual double getHeight() = 0;
 
+    virtual ~IShape(){};
+
 protected:
     double m_dWidth;
     double m_dHeight;

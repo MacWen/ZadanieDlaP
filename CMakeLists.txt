@@ -1,5 +1,6 @@
 cmake_minimum_required (VERSION 2.6)
-project (ZadanieDlaP)
+project(ZadanieDlaP)
+SET(CMAKE_CXX_FLAGS "-std=c++0x -pthread -Wall")
 INCLUDE_DIRECTORIES("${CMAKE_SOURCE_DIR}/include")
 add_library(shapefactory SHARED src/shapefactory.cpp)
 add_library(rectangle SHARED src/rectangle.cpp)
