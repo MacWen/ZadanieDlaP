@@ -1,8 +1,9 @@
 ZadanieDlaP
 
-To compile use:
+To compile type:
 
-$ cmake .
+$ mkdir build && cd build
+$ cmake ..
 $ make
 
 To run use:
