@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Shapes configuration -->
+<Shape>
+    <type>Triangle</type>
+    <parameters width="2.5"  height="0.75"></parameters>
+</Shape>
+<Shape>
+    <type>Rectangle</type>
+    <parameters width="10"  height="20"></parameters>
+</Shape>
+<Shape>
+    <type>Triangle</type>
+    <parameters width="4"  height="5"></parameters>
+</Shape>

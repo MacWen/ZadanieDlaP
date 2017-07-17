@@ -9,8 +9,10 @@
 
 enum ShapeEnum
 {
-  eTriangle,
-  eRectangle
+  eTriangle=1,
+  eRectangle,
+
+  eIncorrectShape
 };
 
 class ShapeFactory
@@ -19,6 +21,10 @@ public:
     ~ShapeFactory();
     static ShapeFactory* GetInstance();
     IShape* CreateShapeInstance(ShapeEnum a_eShape);
+    IShape* GetLastShape();
+    int GetNumberOfShapes();
+    void GetAllShapes();
+    IShape* SelectChild(unsigned int number);
     bool IsFactoryChildren(IShape* a_oShapeObj);
     void Destroy();
 
