@@ -37,7 +37,7 @@ IShape* ShapeFactory::CreateShapeInstance(ShapeEnum a_eShape)
 
 IShape* ShapeFactory::GetLastShape()
 {
-    return children.back();
+    return (children.empty() ? NULL : children.back());
 }
 
 int ShapeFactory::GetNumberOfShapes()
@@ -63,12 +63,12 @@ IShape* ShapeFactory::SelectChild(unsigned int number)
     if(number < children.size())
     {
         std::cout << "Object nr " << number << " selected." << std::endl;
-        return children[number];
+        return (children.empty() ? NULL :children[number]);
     }
     else
     {
         std::cout << "Can't find that object object. First object selected." << std::endl;
-        return children[0];
+        return (children.empty() ? NULL : children[0]);
     }
 }
 

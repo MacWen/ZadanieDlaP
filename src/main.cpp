@@ -22,10 +22,14 @@ void ShowMenu();
 IShape* GetLastShape();
 void MenuSelector();
 void CreateNewShapeFromKeyboard();
-void SetShapeWidth(IShape* shape);
-void SetShapeHeight(IShape* shape);
+void GetShapeArea(IShape* oShape);
+void GetShapeWidth(IShape* oShape);
+void GetShapeHeight(IShape* oShape);
+void SetShapeWidth(IShape* oShape);
+void SetShapeHeight(IShape* oShape);
 double GetDoubleFromKeyboard();
 IShape* ChooseDifferentShape();
+void Destroy();
 
 bool CreateShapesFromXMLFile()
 {
@@ -137,6 +141,7 @@ void ShowMenu()
     std::cout << "Type 5 if you want to see actual height" << std::endl;
     std::cout << "Type 6 if you want to set a new width" << std::endl;
     std::cout << "Type 7 if you want to set a new height" << std::endl;
+    std::cout << "Type 8 if you want to destroy all shapes" << std::endl;
     std::cout << "Type 9 if you want to see it again" << std::endl;
     std::cout << "Type 0 if you want to exit" << std::endl;
 }
@@ -172,19 +177,23 @@ void MenuSelector()
                 shape = ChooseDifferentShape();
                 break;
             case '3':
-                std::cout << "Shape area is: " << shape->getArea() << std::endl;
+                GetShapeArea(shape);
                 break;
             case '4':
-                std::cout << "Shape width is: " << shape->getWidth() << std::endl;
+                GetShapeWidth(shape);
                 break;
             case '5':
-                std::cout << "Shape height is: " << shape->getHeight() << std::endl;
+                GetShapeHeight(shape);
                 break;
             case '6':
                 SetShapeWidth(shape);
                 break;
             case '7':
                 SetShapeHeight(shape);
+                break;
+            case '8':
+                Destroy();
+                shape = NULL;
                 break;
             case '9':
                 ShowMenu();
@@ -232,20 +241,54 @@ void CreateNewShapeFromKeyboard()
     }
 }
 
+void GetShapeArea(IShape* oShape)
+{
+    if(oShape != NULL )
+        std::cout << "Shape area is: " << oShape->getArea() << std::endl;
+    else
+        std::cout << "Create a shape first!" << std::endl;
+}
+
+void GetShapeWidth(IShape* oShape)
+{
+    if(oShape != NULL )
+        std::cout << "Shape width is: " << oShape->getWidth() << std::endl;
+    else
+        std::cout << "Create a shape first!" << std::endl;
+}
+
+void GetShapeHeight(IShape* oShape)
+{
+    if(oShape != NULL )
+        std::cout << "Shape height is: " << oShape->getHeight() << std::endl;
+    else
+        std::cout << "Create a shape first!" << std::endl;
+}
+
 void SetShapeWidth(IShape* oShape)
 {
-    std::cout << std::endl << "Type width:";
-    double width = GetDoubleFromKeyboard();
-    oShape->setWidth(width);
-    std::cout << "Width set to " << width << std::endl;
+    if(oShape != NULL )
+    {
+        std::cout << std::endl << "Type width:";
+        double width = GetDoubleFromKeyboard();
+        oShape->setWidth(width);
+        std::cout << "Width set to " << width << std::endl;
+    }
+    else
+        std::cout << "Create a shape first!" << std::endl;
 }
 
 void SetShapeHeight(IShape* oShape)
 {
-    std::cout << std::endl << "Type height:";
-    double height = GetDoubleFromKeyboard();
-    oShape->setHeight(height);
-    std::cout << "Height set to " << height << std::endl;
+    if(oShape != NULL )
+    {
+        std::cout << std::endl << "Type height:";
+        double height = GetDoubleFromKeyboard();
+        oShape->setHeight(height);
+        std::cout << "Height set to " << height << std::endl;
+    }
+    else
+        std::cout << "Create a shape first!" << std::endl;
 }
 
 double GetDoubleFromKeyboard()
@@ -280,6 +323,16 @@ IShape* ChooseDifferentShape()
     }
 
     return (myFactory != NULL ? myFactory->SelectChild(number) : NULL);
+}
+
+void Destroy()
+{
+    ShapeFactory* myFactory = ShapeFactory::GetInstance();
+    if(myFactory != NULL)
+    {
+        myFactory->Destroy();
+        std::cout << "All shapes deleted." << std::endl;
+    }
 }
 
 int main()
